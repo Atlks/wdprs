@@ -1276,7 +1276,7 @@ class WP_List_Table {
 	<thead>
 	<tr>
 		<?php $this->print_column_headers(); ?>
-		<td>同步状态</td><td>分享状态</td>
+		<td>同步状态</td><td>分享状态</td><td>操作</td>
 	</tr>
 	</thead>
 
@@ -1411,6 +1411,8 @@ class WP_List_Table {
 	 * @param object|array $item The current item.
 	 */
 	protected function single_row_columns( $item ) {
+   //var_dump($item);
+	//	die();
 		list( $columns, $hidden, $sortable, $primary ) = $this->get_column_info();
 
 		foreach ( $columns as $column_name => $column_display_name ) {
@@ -1442,19 +1444,21 @@ class WP_List_Table {
 					$primary
 				);
 			} elseif ( method_exists( $this, 'column_' . $column_name ) ) {
-				echo "<td $attributes>";
+				echo "<td $attributes att2022=1>";
 				echo call_user_func( array( $this, 'column_' . $column_name ), $item );
 				echo $this->handle_row_actions( $item, $column_name, $primary );
 				echo '</td>';
 			} else {
-				echo "<td $attributes>";
+				echo "<td $attributes> att2022=2";
 				echo $this->column_default( $item, $column_name );
 				echo $this->handle_row_actions( $item, $column_name, $primary );
 				echo '</td>';
 			}
 		}
 
-		echo "<td>pubed</td>";	echo "<td>syncced</td>";
+		echo "<td>".$item->synstt."</td>";	echo "<td>".$item->shrstt."</td>";
+
+		echo "<td> <button>同步</button> <button>分享</button></td>";
 	}
 
 	/**
