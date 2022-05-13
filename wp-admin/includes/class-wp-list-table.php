@@ -1272,6 +1272,10 @@ class WP_List_Table {
 
 		$this->screen->render_screen_reader_content( 'heading_list' );
 		?>
+
+		<script>
+
+			</script>
 <table class="wp-list-table <?php echo implode( ' ', $this->get_table_classes() ); ?>">
 	<thead>
 	<tr>
@@ -1444,12 +1448,12 @@ class WP_List_Table {
 					$primary
 				);
 			} elseif ( method_exists( $this, 'column_' . $column_name ) ) {
-				echo "<td $attributes att2022=1>";
+				echo "<td $attributes  >"; // this not run
 				echo call_user_func( array( $this, 'column_' . $column_name ), $item );
 				echo $this->handle_row_actions( $item, $column_name, $primary );
 				echo '</td>';
 			} else {
-				echo "<td $attributes> att2022=2";
+				echo "<td $attributes> ";  //this run
 				echo $this->column_default( $item, $column_name );
 				echo $this->handle_row_actions( $item, $column_name, $primary );
 				echo '</td>';
@@ -1458,7 +1462,7 @@ class WP_List_Table {
 
 		echo "<td>".$item->synstt."</td>";	echo "<td>".$item->shrstt."</td>";
 
-		echo "<td> <button>同步</button> <button>分享</button></td>";
+		echo "<td> <button onclick='synx()'>同步</button> <button onclick='sharex()'>分享</button></td>";
 	}
 
 	/**
