@@ -105,24 +105,26 @@ var_dump_local( '$mysql_conf:'.json_encode($mysql_conf) );
 // // error_log(json_encode($mysql_conf));
  
  
- $sql="select * from wp_posts where post_status='publish' and post_title    like '%".addslashes($_GET['s'])."%' " ;
+ $sql="select * from wp_posts where ID=".intval($_GET['p'])  ;
 
 //$sql = "select * from mac_vod where vod_name like '%$vname%' order by vod_time_add desc limit 500"  ;
 
 $rows=pdo_query($sql);
-foreach ($rows as $k => &$v) {
-     
+
+$v=$rows[0];
+  
      $id=$v['ID'];
     $tit=$v['post_title'];
     $post_content=$v['post_content'];
     $con_smp=substr($post_content, 0 ,270); //汉字需要诚意2
   //  $v['linkHref_app'] = "/vod_app/app_play.html?vid=$vodid&title=$tit&hit=$hit";
 
-     echo    "<a href='/?p=$id'>$tit</a><p>";
-     echo    "<p>$con_smp<p>";
+ //    echo    "<a href='/?p=$id'>$tit</a><p>";
+ echo    "<h1>$tit</h1>";
+     echo    "<p>$post_content<p>";
      echo    "<p>-----------------<p>";
 
-}
+ 
 
 
 

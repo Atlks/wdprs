@@ -13,5 +13,19 @@
  */
 define( 'WP_USE_THEMES', true );
 
-/** Loads the WordPress Environment and Template */
+//---------ati code
+error_reporting(E_ERROR |   E_PARSE);
+if(  intval($_GET['p']) )
+   {
+       //intval
+      $pageid=$_GET['p'];
+    $url ="/p.php?p=$pageid"; Header("Location:$url");
+
+   }else {
+       # code...
+       /** Loads the WordPress Environment and Template */
 require __DIR__ . '/wp-blog-header.php';
+   }
+
+/**  <?php $url = $_GET['url']; Header("Location:$url"); ?> */
+

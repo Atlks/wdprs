@@ -14,7 +14,7 @@ $mysql_conf['db_pwd'] = DB_PASSWORD;
 $mysql_conf['port'] = 3306;
 //defined( 'DB_NAME' )
 
-var_dump( '$mysql_conf:'.json_encode($mysql_conf) );
+//var_dump( '$mysql_conf:'.json_encode($mysql_conf) );
 // // error_log(json_encode($mysql_conf));
 
 /*
@@ -46,21 +46,27 @@ $pdo = new PDO($dbstr, $mysql_conf['db_user'], $mysql_conf['db_pwd']); //创建�
 
 var_dump_local($pdo);
 
+$pdo->exec("set names 'gb2312'");
+
 $pdo->exec("set names 'utf8'");
+//$pdo->exec("set character set 'gb2312'");
+
+
+ 
 function var_dump_ati($o){
     global  $showDbgEcho;
     //   if($showDbgEcho)
     //  echo 'file_exists(../localtest)：：：'.file_exists(__DIR__."/../localtest");
-        if (file_exists(__DIR__."/../localtest99"))
-            var_dump($o);
+    //    if (file_exists(__DIR__."/../localtest99"))
+     //       var_dump($o);
 
 }
 function var_dump_local($o){
             global  $showDbgEcho;
             //   if($showDbgEcho)
             //  echo 'file_exists(../localtest)：：：'.file_exists(__DIR__."/../localtest");
-                if (file_exists(__DIR__."/../localtest99"))
-                    var_dump($o);
+          //      if (file_exists(__DIR__."/../localtest99"))
+          //        var_dump($o);
 
 }
 $logfile78a = __DIR__ . "/logs/log78.log";
