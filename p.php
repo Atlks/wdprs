@@ -89,7 +89,7 @@
 <body class="search search-results logged-in admin-bar no-customize-support lang-cn el-boxed">
 
 
-
+<a href="/">首页</a><p>
 
 <?php
 // api/share.php

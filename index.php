@@ -13,19 +13,37 @@
  */
 define( 'WP_USE_THEMES', true );
 
+
+
+
+function str_starts_with2022 ($str,$pattern) { if (strpos ($str,$pattern) === 0) return true; else return false; }
+
 //---------ati code
 error_reporting(E_ERROR |   E_PARSE);
-if(  intval($_GET['p']) )
+//var_dump($_SERVER["REQUEST_URI"]);
+$urix=$_SERVER["REQUEST_URI"];
+$urlObj=parse_url($_SERVER["REQUEST_URI"]);
+//var_dump($urlObj);
+if( str_starts_with2022 ($_SERVER["REQUEST_URI"],"/idx") )
+{
+ //   echo "sta with";
+ //   echo  substr($urix,4);
+    $idx=  substr($urix,4,strlen($urix)-5);
+    if(  intval( $idx) )
    {
        //intval
-      $pageid=$_GET['p'];
-    $url ="/p.php?p=$pageid"; Header("Location:$url");
+    
+    $url ="/p.php?p=$idx"; Header("Location:$url");
 
    }else {
        # code...
        /** Loads the WordPress Environment and Template */
-require __DIR__ . '/wp-blog-header.php';
+        require __DIR__ . '/wp-blog-header.php';
    }
-
-/**  <?php $url = $_GET['url']; Header("Location:$url"); ?> */
-
+}
+else {
+    # code...
+    /** Loads the WordPress Environment and Template */
+    require __DIR__ . '/wp-blog-header.php';
+}
+ 
